@@ -31,7 +31,7 @@
   },
 
   "pages": {
-    "ranks": {
+    "Ranks": {
       "navLabel": "Ranks",
       "colour": "gold",
       "title": "Server Ranks",
@@ -43,7 +43,7 @@
       "orderLink": "https://discord.gg/qkrEyvx2ye"
     },
 
-    "coins": {
+    "Shards": {
       "navLabel": "Shards",
       "colour": "#00C6FF",
       "title": "Shard Shop",
@@ -141,7 +141,7 @@
       ]
     },
 
-    "keys": {
+    "Keys": {
       "navLabel": "Crate Keys",
       "colour": "purple",
       "title": "Crate Keys",
