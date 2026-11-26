@@ -9,9 +9,9 @@
 
   "pages": {
     "_help": "Turn whole pages on or off. A page that is off disappears from every menu and link.",
-    "ranks": true,
-    "coins": true,
-    "keys": true
+    "Ranks": true,
+    "Shards": true,
+    "Keys": true
   },
 
   "gameModes": ["survival", "lifesteal", "ffa", "economy"],
