@@ -1,3 +1,275 @@
+{
+  "_help": "MergeSMP Store Configuration",
+
+  "currency": {
+    "default": "INR",
+    "base": "INR",
+    "options": {
+      "INR": {
+        "label": "INR",
+        "symbol": "₹",
+        "decimals": 0,
+        "rate": 1
+      },
+      "USD": {
+        "label": "USD",
+        "symbol": "$",
+        "decimals": 2,
+        "rate": 0.012
+      }
+    }
+  },
+
+  "scroll": {
+    "enabled": true,
+    "colourShift": true,
+    "reveal": true
+  },
+
+  "redirect": {
+    "defaultOrderLink": "https://discord.gg/qkrEyvx2ye"
+  },
+
+  "pages": {
+    "ranks": {
+      "navLabel": "Ranks",
+      "colour": "gold",
+      "title": "Server Ranks",
+      "subtitle": "Unlock exclusive perks and become a legend of MergeSMP.",
+      "boardTitle": "Available Ranks",
+      "boardText": "Choose your rank and upgrade your adventure.",
+      "note": "Ranks are applied after payment confirmation. Contact Discord support for assistance.",
+      "buttonText": "Get Rank",
+      "orderLink": "https://discord.gg/qkrEyvx2ye"
+    },
+
+    "coins": {
+      "navLabel": "Shards",
+      "colour": "#00C6FF",
+      "title": "Shard Shop",
+      "subtitle": "Purchase Shards and unlock exclusive rewards on MergeSMP.",
+      "boardTitle": "Available Shard Packs",
+      "boardText": "Choose your shard package.",
+      "note": "Shards are delivered after payment confirmation.",
+      "buttonText": "Buy Shards",
+      "orderLink": "https://discord.gg/qkrEyvx2ye",
+      "cards": [
+        {
+          "name": "10 Shards",
+          "amount": "10",
+          "image": "assets/coin.png",
+          "price": {
+            "INR": 5,
+            "USD": 0.06
+          },
+          "colour": "#00C6FF",
+          "tagline": "Start your shard collection.",
+          "perks": ["10 Shards"],
+          "featured": false,
+          "badge": ""
+        },
+        {
+          "name": "50 Shards",
+          "amount": "50",
+          "image": "assets/coin.png",
+          "price": {
+            "INR": 20,
+            "USD": 0.24
+          },
+          "colour": "#00C6FF",
+          "tagline": "A small boost for your adventure.",
+          "perks": ["50 Shards"],
+          "featured": false,
+          "badge": ""
+        },
+        {
+          "name": "100 Shards",
+          "amount": "100",
+          "image": "assets/coin.png",
+          "price": {
+            "INR": 35,
+            "USD": 0.42
+          },
+          "colour": "#38BDF8",
+          "tagline": "Get more rewards.",
+          "perks": ["100 Shards"],
+          "featured": false,
+          "badge": ""
+        },
+        {
+          "name": "1,000 Shards",
+          "amount": "1K",
+          "image": "assets/coin.png",
+          "price": {
+            "INR": 250,
+            "USD": 3.00
+          },
+          "colour": "#0EA5E9",
+          "tagline": "A great package for regular players.",
+          "perks": ["1,000 Shards"],
+          "featured": false,
+          "badge": ""
+        },
+        {
+          "name": "5,000 Shards",
+          "amount": "5K",
+          "image": "assets/coin.png",
+          "price": {
+            "INR": 1250,
+            "USD": 15.00
+          },
+          "colour": "#2563EB",
+          "tagline": "A powerful shard collection.",
+          "perks": ["5,000 Shards"],
+          "featured": true,
+          "badge": "Popular"
+        },
+        {
+          "name": "20,000 Shards",
+          "amount": "20K",
+          "image": "assets/coin.png",
+          "price": {
+            "INR": 5000,
+            "USD": 60.00
+          },
+          "colour": "#7C3AED",
+          "tagline": "The ultimate shard package.",
+          "perks": ["20,000 Shards"],
+          "featured": false,
+          "badge": "Ultimate"
+        }
+      ]
+    },
+
+    "keys": {
+      "navLabel": "Crate Keys",
+      "colour": "purple",
+      "title": "Crate Keys",
+      "subtitle": "Unlock amazing rewards with exclusive MergeSMP crate keys.",
+      "boardTitle": "Available Crate Keys",
+      "boardText": "Choose your favourite crate and claim exciting rewards.",
+      "note": "Crate keys are delivered after payment confirmation.",
+      "buttonText": "Buy Key",
+      "orderLink": "https://discord.gg/qkrEyvx2ye",
+      "cards": [
+        {
+          "name": "Common Key",
+          "amount": "COMMON",
+          "image": "assets/key.png",
+          "price": {
+            "INR": 5,
+            "USD": 0.06
+          },
+          "colour": "#AAAAAA",
+          "tagline": "Begin your crate adventure.",
+          "perks": ["1 Common Crate Key"],
+          "featured": false,
+          "badge": ""
+        },
+        {
+          "name": "Gold Key",
+          "amount": "GOLD",
+          "image": "assets/key.png",
+          "price": {
+            "INR": 15,
+            "USD": 0.18
+          },
+          "colour": "#FFD700",
+          "tagline": "Unlock golden rewards.",
+          "perks": ["1 Gold Crate Key"],
+          "featured": false,
+          "badge": ""
+        },
+        {
+          "name": "Prime Key",
+          "amount": "PRIME",
+          "image": "assets/key.png",
+          "price": {
+            "INR": 30,
+            "USD": 0.36
+          },
+          "colour": "#00C6FF",
+          "tagline": "Discover premium rewards.",
+          "perks": ["1 Prime Crate Key"],
+          "featured": false,
+          "badge": ""
+        },
+        {
+          "name": "Crimson Key",
+          "amount": "CRIMSON",
+          "image": "assets/key.png",
+          "price": {
+            "INR": 50,
+            "USD": 0.60
+          },
+          "colour": "#FF3030",
+          "tagline": "Unlock powerful rewards.",
+          "perks": ["1 Crimson Crate Key"],
+          "featured": true,
+          "badge": "Popular"
+        },
+        {
+          "name": "Amethyst Key",
+          "amount": "AMETHYST",
+          "image": "assets/key.png",
+          "price": {
+            "INR": 75,
+            "USD": 0.90
+          },
+          "colour": "#A855F7",
+          "tagline": "Discover rare treasures.",
+          "perks": ["1 Amethyst Crate Key"],
+          "featured": false,
+          "badge": "Rare"
+        },
+        {
+          "name": "God Key",
+          "amount": "GOD",
+          "image": "assets/key.png",
+          "price": {
+            "INR": 100,
+            "USD": 1.20
+          },
+          "colour": "#FFAA00",
+          "tagline": "The ultimate crate experience.",
+          "perks": ["1 God Crate Key"],
+          "featured": false,
+          "badge": "Ultimate"
+        }
+      ]
+    }
+  },
+
+  "_ranksHelp": "MergeSMP ranks configuration.",
+
+  "ranks": [
+    {
+      "name": "Member",
+      "price": {
+        "INR": 1,
+        "USD": 0.01
+      },
+      "colour": "#FFFFFF",
+      "tagline": "Your journey starts here.",
+      "perks": [
+        "Member Rank",
+        "Access to Survival",
+        "Access to Economy",
+        "Access to PvP"
+      ],
+      "featured": false,
+      "badge": ""
+    },
+    {
+      "name": "Grinder",
+      "price": {
+        "INR": 49,
+        "USD": 0.59
+      },
+      "colour": "#55FF55",
+      "tagline": "For dedicated players.",
+      "perks": [
+        "Grinder Rank",
         "Exclusive Chat Prefix",
         "Extra Home Slots",
         "Grinder Discord Role"
@@ -11,8 +283,8 @@
         "INR": 99,
         "USD": 1.19
       },
-      "colour": "#FACC15",
-      "tagline": "A first-class upgrade to your journey.",
+      "colour": "#FFD700",
+      "tagline": "Enjoy exclusive VIP benefits.",
       "perks": [
         "VIP Rank",
         "VIP Chat Prefix",
@@ -29,7 +301,7 @@
         "USD": 2.39
       },
       "colour": "#00C6FF",
-      "tagline": "Stand out. Play bigger. Be recognised.",
+      "tagline": "Stand out from the crowd.",
       "perks": [
         "MVP Rank",
         "Exclusive MVP Prefix",
@@ -37,7 +309,7 @@
         "MVP Discord Role"
       ],
       "featured": true,
-      "badge": "MOST POPULAR"
+      "badge": "Popular"
     },
     {
       "name": "Legendary",
@@ -46,7 +318,7 @@
         "USD": 4.19
       },
       "colour": "#A855F7",
-      "tagline": "Make your presence legendary.",
+      "tagline": "Become a legendary player.",
       "perks": [
         "Legendary Rank",
         "Legendary Chat Prefix",
@@ -62,8 +334,8 @@
         "INR": 499,
         "USD": 5.99
       },
-      "colour": "#FF3434",
-      "tagline": "Bring the attitude. Own the spotlight.",
+      "colour": "#FF3030",
+      "tagline": "Make your presence unforgettable.",
       "perks": [
         "Deadly Rank",
         "Exclusive Deadly Prefix",
@@ -79,8 +351,8 @@
         "INR": 749,
         "USD": 8.99
       },
-      "colour": "#F59E0B",
-      "tagline": "A powerful status for the boldest players.",
+      "colour": "#FFAA00",
+      "tagline": "Experience the power of a God.",
       "perks": [
         "God Rank",
         "Exclusive God Prefix",
@@ -88,16 +360,16 @@
         "Exclusive Discord Role"
       ],
       "featured": false,
-      "badge": "ELITE"
+      "badge": "Ultimate"
     },
     {
       "name": "Immortal",
       "price": {
         "INR": 1000,
-        "USD": 12.0
+        "USD": 12.00
       },
-      "colour": "#F0ABFC",
-      "tagline": "The highest status. A name that lasts.",
+      "colour": "#FF00FF",
+      "tagline": "The highest status on MergeSMP.",
       "perks": [
         "Immortal Rank",
         "Exclusive Immortal Prefix",
@@ -106,7 +378,7 @@
         "Highest Rank Status"
       ],
       "featured": false,
-      "badge": "EXCLUSIVE"
+      "badge": "Exclusive"
     }
   ]
 }
