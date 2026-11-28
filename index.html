@@ -3,7 +3,7 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1">
-<title>Minecraft Server</title>
+<title>MergeSMP | Minecraft Network</title>
 <meta name="description" content="Minecraft server landing page">
 <meta name="theme-color" content="#0a0a0c">
 <link rel="icon" id="favicon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 32 32'%3E%3Crect width='32' height='32' rx='7' fill='%233b82ff'/%3E%3C/svg%3E">
@@ -61,7 +61,7 @@ button,.btn,a,summary{cursor:pointer}
 .mini-copy b{background:color-mix(in srgb,var(--accent) 88%,transparent);color:var(--on-accent);padding:4px 10px;border-radius:8px;font-size:.76rem}
 
 /* ---------- store button + floating navbar (site.json) ---------- */
-.store-btn{display:none;align-items:side;justify-content:side;gap:8px;text-decoration:none;font:700 .84rem var(--ui);
+.store-btn{display:none;align-items:center;justify-content:center;gap:8px;text-decoration:none;font:700 .84rem var(--ui);
   background:color-mix(in srgb,var(--accent) 84%,transparent);color:var(--on-accent);padding:10px 16px;border-radius:12px;
   border:1px solid color-mix(in srgb,var(--accent) 60%,#fff 12%);
   box-shadow:inset 0 1px 0 rgba(255,255,255,.28);transition:filter .2s,transform .15s}
@@ -497,6 +497,29 @@ footer.site-footer{position:relative;z-index:1;margin-top:clamp(16px,3vw,40px);b
   .footer-copy{text-align:left}
 }
 
+/* MergeSMP custom community footer */
+.merge-footer{background:rgba(7,10,17,.92);border-top:1px solid var(--stroke)}
+.merge-footer-inner{max-width:1320px;display:grid;grid-template-columns:minmax(260px,1.45fr) repeat(2,minmax(150px,.7fr));gap:clamp(28px,5vw,76px);align-items:start;padding-top:54px;padding-bottom:42px}
+.merge-footer-brandline{display:flex;align-items:center;gap:14px;margin-bottom:18px}
+.merge-footer-logo{width:54px;height:54px;object-fit:contain;border-radius:14px;filter:drop-shadow(0 5px 18px color-mix(in srgb,var(--accent) 35%,transparent))}
+.merge-footer-brandline .footer-kicker{margin:0 0 4px}
+.merge-footer-title{font:400 clamp(1.8rem,3vw,2.5rem) var(--head);letter-spacing:.02em;margin:0}
+.merge-footer-title span{color:var(--accent)}
+.merge-about .footer-note{max-width:440px;line-height:1.9;margin-bottom:22px}
+.merge-socials{display:flex;gap:10px;flex-wrap:wrap}
+.merge-socials a{width:43px;height:43px;display:grid;place-items:center;border:1px solid var(--stroke);border-radius:12px;background:var(--glass);color:var(--text);transition:.2s}
+.merge-socials a:hover{transform:translateY(-3px);border-color:var(--accent);color:var(--accent)}
+.merge-socials svg{width:20px;height:20px;fill:none;stroke:currentColor;stroke-width:1.7;stroke-linecap:round;stroke-linejoin:round}
+.merge-socials svg .fill{fill:currentColor;stroke:none}
+.merge-footer-column{display:grid;gap:13px;justify-items:start;padding-top:7px}
+.merge-footer-column h3{font:700 .78rem var(--ui);letter-spacing:.13em;color:var(--text);margin:0 0 6px}
+.merge-footer-column a{font-size:.88rem;color:var(--muted);text-decoration:none;transition:color .2s,transform .2s}
+.merge-footer-column a:hover{color:var(--accent);transform:translateX(3px)}
+.merge-footer-bottom{max-width:1320px;margin:auto;padding:18px clamp(16px,5vw,56px) 22px;border-top:1px solid var(--stroke);display:flex;justify-content:space-between;gap:14px;flex-wrap:wrap;color:var(--muted);font-size:.76rem}
+.merge-footer-bottom b{color:var(--text)}
+@media(max-width:760px){.merge-footer-inner{grid-template-columns:1fr 1fr;gap:30px}.merge-about{grid-column:1/-1}.merge-footer-bottom{display:grid;gap:8px}}
+@media(max-width:420px){.merge-footer-inner{grid-template-columns:1fr}.merge-about{grid-column:auto}}
+
 /* sticky mobile bar */
 .sticky-bar{display:none}
 .toast{position:fixed;left:50%;bottom:26px;transform:translate(-50%,20px);opacity:0;pointer-events:none;z-index:60;
@@ -761,18 +784,25 @@ footer.site-footer{position:relative;z-index:1;margin-top:clamp(16px,3vw,40px);b
   </section>
 </main>
 
-<footer class="site-footer">
-  <div class="footer-inner">
-    <div class="footer-brand">
-      <p class="footer-kicker">Minecraft server</p>
-      <h2 class="footer-name" id="footerName"></h2>
-      <p class="footer-note" id="footerText"></p>
+<footer class="site-footer merge-footer">
+  <div class="footer-inner merge-footer-inner">
+    <div class="footer-brand merge-about">
+      <div class="merge-footer-brandline">
+        <img class="merge-footer-logo" src="mergesmp-logo.svg" alt="MergeSMP logo">
+        <div><p class="footer-kicker">WELCOME TO THE NETWORK</p><h2 class="merge-footer-title">MERGE<span>SMP</span></h2></div>
+      </div>
+      <p class="footer-note">Explore the world of MergeSMP — survive, build your empire, trade smart and battle your way to the top. Your adventure. Your legacy.</p>
+      <div class="merge-socials" aria-label="MergeSMP social links">
+        <a href="https://discord.gg/qkrEyvx2ye" target="_blank" rel="noopener" aria-label="Discord" title="Discord"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M7 7.5c3.3-1.7 6.7-1.7 10 0l1.2 8.2c-2 1.7-3.7 2.3-5.2 2.6l-.8-1.3m-1.6 0-.8 1.3c-1.5-.3-3.2-.9-5.2-2.6L5.8 7.5M9 13h.01M15 13h.01M8 9.5c2.7 1.4 5.3 1.4 8 0"/></svg></a>
+        <a href="https://instagram.com/mergesmp" target="_blank" rel="noopener" aria-label="Instagram" title="Instagram"><svg viewBox="0 0 24 24" aria-hidden="true"><rect x="3.5" y="3.5" width="17" height="17" rx="5"/><circle cx="12" cy="12" r="4"/><circle cx="17.7" cy="6.7" r=".8" class="fill"/></svg></a>
+        <a href="https://wa.me/91XXXXXXXXXX" target="_blank" rel="noopener" aria-label="WhatsApp" title="WhatsApp"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M20 11.7a8 8 0 0 1-11.8 7L4 20l1.3-4A8 8 0 1 1 20 11.7Z"/><path d="M9 8.5c.5 2.6 2 4.1 4.7 5"/></svg></a>
+        <a href="mailto:YOUR-GMAIL-HERE@gmail.com" aria-label="Email" title="Gmail"><svg viewBox="0 0 24 24" aria-hidden="true"><rect x="3" y="5" width="18" height="14" rx="2"/><path d="m4 7 8 6 8-6"/></svg></a>
+      </div>
     </div>
-    <div class="footer-meta">
-      <nav class="footer-links" id="footerLinks" aria-label="Footer"></nav>
-      <p class="footer-copy" id="footerCopy"></p>
-    </div>
+    <div class="merge-footer-column"><h3>EXPLORE MERGESMP</h3><a href="#top">Home</a><a href="#features">Server Features</a><a href="#how-to-join">How to Join</a><a href="#faq">FAQ & Support</a><a href="store.html">Official Store ↗</a></div>
+    <div class="merge-footer-column"><h3>COMMUNITY</h3><a href="https://discord.gg/qkrEyvx2ye" target="_blank" rel="noopener">Discord Community ↗</a><a href="https://instagram.com/mergesmp" target="_blank" rel="noopener">Instagram ↗</a><a href="https://wa.me/91XXXXXXXXXX" target="_blank" rel="noopener">WhatsApp ↗</a><a href="mailto:YOUR-GMAIL-HERE@gmail.com">Email the Team ↗</a></div>
   </div>
+  <div class="merge-footer-bottom"><span>© <span id="mergeFooterYear"></span> <b>MergeSMP</b>. All rights reserved.</span><span>Explore. Create. Conquer.</span><span>Not affiliated with Mojang or Microsoft.</span></div>
 </footer>
 
 <div class="sticky-bar" id="stickyBar">
@@ -785,7 +815,7 @@ footer.site-footer{position:relative;z-index:1;margin-top:clamp(16px,3vw,40px);b
 <script type="application/json" id="advanced-config">
 {
   "server": {
-    "name": "Example MC",
+    "name": "MergeSMP",
     "tagline": "Fun, easy and friendly Minecraft survival for everyone.",
     "bedrock": false,
     "refreshSeconds": 30
@@ -981,9 +1011,9 @@ function previewDoc(name){
 }
 
 const FALLBACK = {
-  server:{name:"Example MC",tagline:"Edit config.json to customise this page.",ip:"play.examplemc.fun",bedrock:false,bedrockPort:19132,refreshSeconds:30},
+  server:{name:"MergeSMP",tagline:"Survival • Economy • PvP — build your legacy.",ip:"mergesmp.play.hosting",bedrock:false,bedrockPort:19132,refreshSeconds:30},
   logo:"",favicon:"",animations:true,tilt:true,stickyMobileBar:true,useServerIcon:true,showMotd:true,
-  discord:{link:"https://discord.gg/S763GafZPR",title:"Join our Discord",text:"Chat with players and get support."},
+  discord:{link:"https://discord.gg/qkrEyvx2ye",title:"Join our Discord",text:"Chat with players and get support."},
   theme:{default:"blue",options:{red:{label:"Red",accent:"#ff3b3b",accent2:"#ff7a45"},blue:{label:"Blue",accent:"#3b82ff",accent2:"#22d3ee"},yellow:{label:"Yellow",accent:"#ffd23f",accent2:"#ff9f1c"},purple:{label:"Purple",accent:"#a855f7",accent2:"#ec4899"},white:{label:"White",accent:"#f2f2f2",accent2:"#b8b8c0"},pink:{label:"Pink",accent:"#ec4899",accent2:"#f472b6"},orange:{label:"Orange",accent:"#f97316",accent2:"#fbbf24"},green:{label:"Green",accent:"#22c55e",accent2:"#84cc16"},lime:{label:"Lime",accent:"#a3e635",accent2:"#4ade80"},teal:{label:"Teal",accent:"#14b8a6",accent2:"#22d3ee"},cyan:{label:"Cyan",accent:"#22d3ee",accent2:"#3b82f6"},indigo:{label:"Indigo",accent:"#6366f1",accent2:"#a855f7"},magenta:{label:"Magenta",accent:"#d946ef",accent2:"#ec4899"},gold:{label:"Gold",accent:"#eab308",accent2:"#f59e0b"},crimson:{label:"Crimson",accent:"#dc2626",accent2:"#f97316"},slate:{label:"Slate",accent:"#94a3b8",accent2:"#64748b"}}},
   hero:{joinButton:"Copy server IP",discordButton:"Join Discord",playersLabel:"players online right now",onlineText:"Server online",offlineText:"Server offline",copiedText:"IP copied!",whoLabel:"Who’s online"},
   show:{features:true,howToJoin:true,faq:true,discord:true},
@@ -1566,11 +1596,8 @@ function fill(cfg){
     dt.append(sm,answer); fl.appendChild(dt);
   });
 
-  $("footerName").textContent=s.name;
-  $("footerText").textContent=cfg.footer.text||"";
-  $("footerCopy").textContent="© "+new Date().getFullYear()+" "+s.name;
-  const fk=$("footerLinks"); fk.innerHTML="";
-  (cfg.footer.links||[]).forEach(l=>{const a=document.createElement("a");a.href=l.url;a.textContent=l.label;a.target="_blank";a.rel="noopener";fk.appendChild(a)});
+  const footerYear=$("mergeFooterYear");
+  if(footerYear) footerYear.textContent=new Date().getFullYear();
 }
 
 /* ---------- live chat card (driftStore plugin + secret.json) ---------- */
