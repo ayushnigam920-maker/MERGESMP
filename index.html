@@ -47,7 +47,7 @@ button,.btn,a,summary{cursor:pointer}
 .top{display:flex;align-items:center;gap:22px;padding:14px clamp(16px,5vw,56px);position:sticky;top:0;z-index:10;
   background:rgba(10,11,17,.55);backdrop-filter:blur(18px) saturate(150%);-webkit-backdrop-filter:blur(18px) saturate(150%);border-bottom:1px solid var(--stroke)}
 .brand{display:flex;align-items:center;gap:12px;text-decoration:none;font-family:var(--head);font-size:1.1rem;min-width:0}
-#brandName{overflow-wrap:anywhere;min-width:0}
+#brandName{overflow-wrap:anywhere;min-width:0;font-family:var(--ui);font-size:.92rem;letter-spacing:.035em}
 .logo{width:38px;height:38px;object-fit:cover;border-radius:12px;border:1px solid var(--stroke-2)}
 #nav{display:flex;gap:4px;margin-left:auto;flex-wrap:wrap;justify-content:flex-end}
 #nav a{text-decoration:none;color:var(--muted);font:500 .93rem var(--ui);padding:8px 13px;border-radius:10px;position:relative;transition:color .2s,background .2s,box-shadow .2s}
@@ -70,6 +70,8 @@ button,.btn,a,summary{cursor:pointer}
 body.store-on .store-btn{display:inline-flex}
 #nav a.nav-store{color:color-mix(in srgb,var(--accent) 72%,#fff)}
 #nav a.nav-store:hover{color:var(--text)}
+#nav a.nav-discord{display:inline-flex;align-items:center;justify-content:center;background:color-mix(in srgb,var(--accent) 84%,transparent);color:var(--on-accent);font:700 .84rem var(--ui);padding:10px 16px;border:1px solid color-mix(in srgb,var(--accent) 60%,#fff 12%);border-radius:12px;box-shadow:inset 0 1px 0 rgba(255,255,255,.28);}
+#nav a.nav-discord:hover{filter:brightness(1.08);color:var(--on-accent);background:color-mix(in srgb,var(--accent) 90%,transparent)}
 html.nav-floating{scroll-padding-top:120px}
 body.nav-floating .top{position:fixed;top:14px;left:14px;right:14px;max-width:1200px;margin:0 auto;
   border:1px solid var(--stroke);border-radius:18px;box-shadow:0 24px 60px rgba(0,0,0,.6);padding:10px clamp(14px,2.4vw,26px)}
@@ -660,7 +662,6 @@ footer.site-footer{position:relative;z-index:1;margin-top:clamp(16px,3vw,40px);b
     <span id="brandName"></span>
   </a>
   <nav id="nav" aria-label="Main"></nav>
-  <button class="mini-copy" id="navCopy" type="button"><span id="navIp"></span><b>Copy</b></button>
   <a class="store-btn" id="storeBtn" href="store.html">Store</a>
 </header>
 
@@ -1582,7 +1583,7 @@ function fill(cfg){
   const s=cfg.server,h=cfg.hero,sh=cfg.show||{};
   document.title=s.name+" – Minecraft Server";
   $("brandName").textContent=s.name; $("heroName").textContent=s.name; $("heroTagline").textContent=s.tagline;
-  $("ipText").textContent=s.ip; $("navIp").textContent=s.ip;
+  $("ipText").textContent=s.ip;
   $("copyBtn").textContent=h.joinButton; $("stickyCopy").textContent=h.joinButton;
   $("playersLabel").textContent=h.playersLabel; $("whoLabel").textContent=h.whoLabel||"Who’s online";
   if(cfg.favicon) $("favicon").href=cfg.favicon;
@@ -1592,7 +1593,7 @@ function fill(cfg){
     if(!cfg.logo){ i.style.display="none"; return; }
     i.src=cfg.logo; i.onerror=()=>i.style.display="none";
   });
-  ["copyBtn","navCopy","stickyCopy"].forEach(id=>$(id).onclick=()=>copyIp(cfg));
+  ["copyBtn","stickyCopy"].forEach(id=>$(id).onclick=()=>copyIp(cfg));
 
   const d=cfg.discord;
   ["heroDiscord","discordBtn","stickyDiscord","onlineDiscord"].forEach(id=>$(id).href=d.link);
@@ -1607,7 +1608,7 @@ function fill(cfg){
     const a=document.createElement("a");
     a.textContent=n.label;
     if(n.store){ a.href=storeUrl(n.store); }
-    else if(n.discord){ a.href=d.link; a.target="_blank"; a.rel="noopener noreferrer"; }
+    else if(n.discord){ a.href=d.link; a.className="nav-discord"; a.target="_blank"; a.rel="noopener noreferrer"; }
     else if(n.url){ a.href=n.url; a.target="_blank"; a.rel="noopener noreferrer"; }
     else { a.href="#"+n.target; a.dataset.t=n.target; }
     nav.appendChild(a);
