@@ -68,6 +68,15 @@ button,.btn,a,summary{cursor:pointer}
 .store-btn:hover{filter:brightness(1.08)}
 .store-btn:active{transform:translateY(1px)}
 body.store-on .store-btn{display:inline-flex}
+/* Minecraft username chip (matches the Store navbar) */
+.user-chip{display:flex;align-items:center;gap:9px;font:600 .84rem var(--ui);color:var(--text);cursor:pointer;
+  background:var(--glass);border:1px solid var(--stroke);padding:6px 12px;border-radius:12px;min-height:40px;
+  backdrop-filter:blur(14px);-webkit-backdrop-filter:blur(14px);transition:border-color .2s,background .2s;white-space:nowrap}
+.user-chip:hover{border-color:var(--stroke-2);background:var(--glass-2)}
+.user-chip.is-set{padding-left:6px}
+.user-head{width:28px;height:28px;border-radius:8px;image-rendering:pixelated;flex:none;background:var(--glass-2)}
+.user-chip span{max-width:120px;overflow:hidden;text-overflow:ellipsis;white-space:nowrap}
+@media(max-width:820px){.top{gap:10px}.user-chip{margin-left:auto}.user-chip span{max-width:92px}.store-btn{padding:9px 12px}}
 #nav a.nav-store{color:color-mix(in srgb,var(--accent) 72%,#fff)}
 #nav a.nav-store:hover{color:var(--text)}
 #nav a.nav-discord{display:inline-flex;align-items:center;justify-content:center;background:color-mix(in srgb,var(--accent) 84%,transparent);color:var(--on-accent);font:700 .84rem var(--ui);padding:10px 16px;border:1px solid color-mix(in srgb,var(--accent) 60%,#fff 12%);border-radius:12px;box-shadow:inset 0 1px 0 rgba(255,255,255,.28);}
@@ -522,6 +531,20 @@ footer.site-footer{position:relative;z-index:1;margin-top:clamp(16px,3vw,40px);b
 @media(max-width:760px){.merge-footer-inner{grid-template-columns:1fr 1fr;gap:30px}.merge-about{grid-column:1/-1}.merge-footer-bottom{display:grid;gap:8px}}
 @media(max-width:420px){.merge-footer-inner{grid-template-columns:1fr}.merge-about{grid-column:auto}}
 
+/* Minecraft username dialog */
+.user-dialog{position:fixed;inset:0;z-index:80;display:grid;place-items:center;padding:18px;background:rgba(0,0,0,.72);backdrop-filter:blur(10px)}
+.user-dialog[hidden]{display:none}
+.user-dialog-panel{width:min(100%,440px);padding:24px;background:#11121b;border:1px solid var(--stroke-2);border-radius:20px;box-shadow:0 28px 80px rgba(0,0,0,.6)}
+.user-dialog-head{display:flex;align-items:center;justify-content:space-between;gap:14px;margin-bottom:20px}
+.user-dialog-head h2{font-size:1.35rem;margin:0}
+.user-dialog-close{width:36px;height:36px;border:1px solid var(--stroke);border-radius:10px;background:var(--glass);color:var(--text);font-size:1.1rem;cursor:pointer}
+.user-dialog label{display:block;font:600 .82rem var(--ui);margin-bottom:8px;color:var(--text)}
+.user-dialog input{width:100%;padding:13px 14px;border:1px solid var(--stroke-2);border-radius:11px;background:#090a10;color:var(--text);font:500 .95rem var(--ui);outline:none}
+.user-dialog input:focus{border-color:var(--accent);box-shadow:0 0 0 3px color-mix(in srgb,var(--accent) 18%,transparent)}
+.user-dialog small{display:block;color:var(--muted);font-size:.78rem;margin-top:9px;line-height:1.5}
+.user-dialog-actions{display:flex;gap:9px;flex-wrap:wrap;margin-top:18px}
+.user-dialog-actions .btn{padding:11px 16px;min-height:42px;font-size:.86rem}
+
 /* sticky mobile bar */
 .sticky-bar{display:none}
 .toast{position:fixed;left:50%;bottom:26px;transform:translate(-50%,20px);opacity:0;pointer-events:none;z-index:60;
@@ -662,6 +685,10 @@ footer.site-footer{position:relative;z-index:1;margin-top:clamp(16px,3vw,40px);b
     <span id="brandName"></span>
   </a>
   <nav id="nav" aria-label="Main"></nav>
+  <button class="user-chip" id="userBtn" type="button" aria-label="Set your Minecraft username">
+    <img class="user-head" id="userHead" alt="" hidden>
+    <span id="userName">Sign in</span>
+  </button>
   <a class="store-btn" id="storeBtn" href="store.html">Store</a>
 </header>
 
@@ -866,6 +893,15 @@ footer.site-footer{position:relative;z-index:1;margin-top:clamp(16px,3vw,40px);b
 
 <div class="custom-cursor" id="customCursor" aria-hidden="true"></div>
 <div class="toast" id="toast" role="status"></div>
+<div class="user-dialog" id="userDialog" hidden>
+  <div class="user-dialog-panel" role="dialog" aria-modal="true" aria-labelledby="userDialogTitle">
+    <div class="user-dialog-head"><h2 id="userDialogTitle">Your Minecraft username</h2><button class="user-dialog-close" id="userClose" type="button" aria-label="Close">✕</button></div>
+    <label for="userNameInput">Minecraft username</label>
+    <input id="userNameInput" type="text" maxlength="16" autocomplete="off" placeholder="Your in-game name">
+    <small>Your name and Minecraft head will appear in the navbar. Saved only in this browser.</small>
+    <div class="user-dialog-actions"><button class="btn" id="saveUserBtn" type="button">Save username</button><button class="btn ghost" id="removeUserBtn" type="button" hidden>Remove name</button></div>
+  </div>
+</div>
 <script type="application/json" id="advanced-config">
 {
   "server": {
@@ -1579,6 +1615,48 @@ function storeUrl(page){
   if(page==="all") return (base||"/")+"store";
   return (base||"/")+"store/"+(page||"ranks");
 }
+/* ---------- Store-style Minecraft username chip ---------- */
+function rememberedMinecraftName(){
+  try{return String(localStorage.getItem("storeUsername")||"").trim()}catch(e){return ""}
+}
+function paintMinecraftUser(){
+  const chip=$("userBtn"),head=$("userHead"),label=$("userName");
+  if(!chip||!head||!label)return;
+  const name=rememberedMinecraftName();
+  if(name){
+    label.textContent=name;chip.classList.add("is-set");head.hidden=false;
+    head.onerror=()=>{head.hidden=true};
+    head.src="https://mc-heads.net/avatar/"+encodeURIComponent(name)+"/64";
+    chip.setAttribute("aria-label","Signed in as "+name+" - change username");
+  }else{
+    label.textContent="Sign in";chip.classList.remove("is-set");head.hidden=true;head.removeAttribute("src");
+    chip.setAttribute("aria-label","Set your Minecraft username");
+  }
+}
+function openMinecraftUser(){
+  const input=$("userNameInput");input.value=rememberedMinecraftName();
+  $("removeUserBtn").hidden=!rememberedMinecraftName();
+  $("userDialog").hidden=false;document.body.style.overflow="hidden";
+  setTimeout(()=>input.focus(),50);
+}
+function closeMinecraftUser(){ $("userDialog").hidden=true;document.body.style.overflow=""; }
+function saveMinecraftUser(){
+  const input=$("userNameInput"),name=String(input.value||"").trim();
+  if(name.length<3){input.focus();toast("Enter a valid Minecraft username");return;}
+  try{localStorage.setItem("storeUsername",name)}catch(e){}
+  paintMinecraftUser();closeMinecraftUser();toast("Username saved");
+}
+function setupMinecraftUser(){
+  $("userBtn").addEventListener("click",openMinecraftUser);
+  $("userClose").addEventListener("click",closeMinecraftUser);
+  $("saveUserBtn").addEventListener("click",saveMinecraftUser);
+  $("userNameInput").addEventListener("keydown",e=>{if(e.key==="Enter")saveMinecraftUser()});
+  $("removeUserBtn").addEventListener("click",()=>{try{localStorage.removeItem("storeUsername")}catch(e){}paintMinecraftUser();closeMinecraftUser();toast("Username removed")});
+  $("userDialog").addEventListener("click",e=>{if(e.target===$("userDialog"))closeMinecraftUser()});
+  document.addEventListener("keydown",e=>{if(e.key==="Escape"&&!$("userDialog").hidden)closeMinecraftUser()});
+  paintMinecraftUser();
+}
+
 function fill(cfg){
   const s=cfg.server,h=cfg.hero,sh=cfg.show||{};
   document.title=s.name+" – Minecraft Server";
@@ -2078,7 +2156,7 @@ async function updateStatus(cfg){
     document.body.classList.add("nav-floating");
     document.documentElement.classList.add("nav-floating");
   }
-  fill(cfg); applyTheme(cfg); setupScrollMotion(); setupReveal(); setupScrollColour(); setupScrollSpy(); setupTilt(cfg); setupCustomCursor();
+  fill(cfg); setupMinecraftUser(); applyTheme(cfg); setupScrollMotion(); setupReveal(); setupScrollColour(); setupScrollSpy(); setupTilt(cfg); setupCustomCursor();
   if(cfg.animations!==false){ setupLightBackground(); }
   setupGlassButtons();
   setupStoreSearch(cfg);
