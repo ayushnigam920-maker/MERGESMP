@@ -869,7 +869,7 @@ footer.site-footer{position:relative;z-index:1;margin-top:clamp(16px,3vw,40px);b
   <div class="footer-inner merge-footer-inner">
     <div class="footer-brand merge-about">
       <div class="merge-footer-brandline">
-        <img class="merge-footer-logo" src="mergesmp-logo.svg" alt="MergeSMP logo">
+        <img class="merge-footer-logo" src="mergesmp-logo.png" alt="MergeSMP logo">
         <div><p class="footer-kicker">WELCOME TO THE NETWORK</p><h2 class="merge-footer-title">MERGE<span>SMP</span></h2></div>
       </div>
       <p class="footer-note">Explore the world of MergeSMP — survive, build your empire, trade smart and battle your way to the top. Your adventure. Your legacy.</p>
@@ -914,8 +914,9 @@ footer.site-footer{position:relative;z-index:1;margin-top:clamp(16px,3vw,40px);b
     "title": "Join our Discord",
     "text": "Chat with players, get support, win giveaways and hear about updates first."
   },
-  "favicon": "",
-  "useServerIcon": true,
+  "favicon": "mergesmp-logo.png",
+  "logo": "mergesmp-logo.png",
+  "useServerIcon": false,
   "showMotd": true,
   "animations": true,
   "tilt": true,
@@ -1102,7 +1103,7 @@ function previewDoc(name){
 
 const FALLBACK = {
   server:{name:"MergeSMP",tagline:"Survival • Economy • PvP — build your legacy.",ip:"mergesmp.play.hosting",bedrock:false,bedrockPort:19132,refreshSeconds:30},
-  logo:"",favicon:"",animations:true,tilt:true,stickyMobileBar:true,useServerIcon:true,showMotd:true,
+  logo:"mergesmp-logo.png",favicon:"mergesmp-logo.png",animations:true,tilt:true,stickyMobileBar:true,useServerIcon:false,showMotd:true,
   discord:{link:"https://discord.gg/qkrEyvx2ye",title:"Join our Discord",text:"Chat with players and get support."},
   theme:{default:"blue",options:{red:{label:"Red",accent:"#ff3b3b",accent2:"#ff7a45"},blue:{label:"Blue",accent:"#3b82ff",accent2:"#22d3ee"},yellow:{label:"Yellow",accent:"#ffd23f",accent2:"#ff9f1c"},purple:{label:"Purple",accent:"#a855f7",accent2:"#ec4899"},white:{label:"White",accent:"#f2f2f2",accent2:"#b8b8c0"},pink:{label:"Pink",accent:"#ec4899",accent2:"#f472b6"},orange:{label:"Orange",accent:"#f97316",accent2:"#fbbf24"},green:{label:"Green",accent:"#22c55e",accent2:"#84cc16"},lime:{label:"Lime",accent:"#a3e635",accent2:"#4ade80"},teal:{label:"Teal",accent:"#14b8a6",accent2:"#22d3ee"},cyan:{label:"Cyan",accent:"#22d3ee",accent2:"#3b82f6"},indigo:{label:"Indigo",accent:"#6366f1",accent2:"#a855f7"},magenta:{label:"Magenta",accent:"#d946ef",accent2:"#ec4899"},gold:{label:"Gold",accent:"#eab308",accent2:"#f59e0b"},crimson:{label:"Crimson",accent:"#dc2626",accent2:"#f97316"},slate:{label:"Slate",accent:"#94a3b8",accent2:"#64748b"}}},
   hero:{joinButton:"Copy server IP",discordButton:"Join Discord",playersLabel:"players online right now",onlineText:"Server online",offlineText:"Server offline",copiedText:"IP copied!",whoLabel:"Who’s online"},
